@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { Button, TextField, Typography } from "@mui/material";
+import Navbar from "./components/Navbar/Navbar";
+import Panal from "./components/Panal/Panal";
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <Navbar>View Audience</Navbar>
+
+      <div className="App">
+        <Button
+          variant="outlined"
+          onClick={() => setIsOpen(true)}
+          sx={{ border: "1px solid #39aebc" }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Save segment
+        </Button>
+
+        <Panal open={isOpen} onClose={() => setIsOpen(false)}></Panal>
+      </div>
+    </>
   );
 }
 

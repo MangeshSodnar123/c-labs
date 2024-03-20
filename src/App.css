@@ -1,6 +1,7 @@
 .App {
-  text-align: center;
-}
+  text-align: left;
+  padding: 5%;
+} 
 
 .App-logo {
   height: 40vmin;
@@ -36,3 +37,8 @@
     transform: rotate(360deg);
   }
 }
+
+.blur {
+  filter: blur(1px);
+}
+
