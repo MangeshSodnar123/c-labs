@@ -83,14 +83,3 @@ export default function Panal({ open, children, onClose }) {
     document.getElementById("portal")
   );
 }
-
-// return ReactDom.createPortal(
-//   <>
-//     <div style={OVERLAY_STYLES} />
-//     <div style={MODAL_STYLES}>
-//       <button onClick={onClose}>Close Modal</button>
-//       {children}
-//     </div>
-//   </>,
-//   document.getElementById('portal')
-// )
