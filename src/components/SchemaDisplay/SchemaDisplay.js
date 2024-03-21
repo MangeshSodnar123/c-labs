@@ -2,9 +2,14 @@ import React from "react";
 import ColoredDot from "../ColoredDot/ColoredDot";
 import "./SchemaDisplay.css";
 import IconButton from "@mui/material/IconButton";
-import RemoveIcon from '@mui/icons-material/Remove';
+import RemoveIcon from "@mui/icons-material/Remove";
 
-export default function SchemaDisplay({ schemas, allSchemas, onSchemaChange }) {
+export default function SchemaDisplay({
+  schemas,
+  allSchemas,
+  onSchemaChange,
+  onRemoveSchema,
+}) {
   return (
     <div>
       {schemas.map((schema, index) => (
@@ -32,7 +37,11 @@ export default function SchemaDisplay({ schemas, allSchemas, onSchemaChange }) {
               </option>
             ))}
           </select>
-          <IconButton aria-label="delete" size="small">
+          <IconButton
+            aria-label="delete"
+            size="small"
+            onClick={() => onRemoveSchema(index)}
+          >
             <RemoveIcon />
           </IconButton>
         </div>

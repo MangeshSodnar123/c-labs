@@ -43,6 +43,12 @@ export default function Trait() {
     setSchemas(updatedSchemas);
   };
 
+  const handleRemoveSchema = (index) => {
+    const updatedSchemas = [...schemas];
+    updatedSchemas.splice(index, 1);
+    setSchemas(updatedSchemas);
+  };
+
   const handleSaveSegment = () => {
     const data = {
       segment_name: "last_10_days_blog_visits",
@@ -61,6 +67,7 @@ export default function Trait() {
         schemas={schemas}
         allSchemas={allSchemas}
         onSchemaChange={handleSchemaChange}
+        onRemoveSchema={handleRemoveSchema}
       />
       <select
         value={selectedValue}
