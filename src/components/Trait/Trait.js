@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Trait.css";
 import SchemaDisplay from "../SchemaDisplay/SchemaDisplay";
-import ColoredDot from "../ColoredDot/ColoredDot";
+
 
 export default function Trait({ schemas, setSchemas}) {
   const [selectedValue, setSelectedValue] = useState("");
@@ -49,17 +49,6 @@ export default function Trait({ schemas, setSchemas}) {
     setSchemas(updatedSchemas);
   };
 
-  const handleSaveSegment = () => {
-    const data = {
-      segment_name: "last_10_days_blog_visits",
-      schema: schemas.map((schema) => ({
-        [schema]:
-          schema.charAt(0).toUpperCase() + schema.slice(1).replace("_", " "),
-      })),
-    };
-    console.log("Data to be saved:", data);
-    // Send data to server
-  };
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import { TextField, Typography, Button, Box } from "@mui/material";
+import { Typography, Button, Box } from "@mui/material";
 import "./Panal.css";
 import Navbar from "../Navbar/Navbar";
 import ColoredDot from "../ColoredDot/ColoredDot";
