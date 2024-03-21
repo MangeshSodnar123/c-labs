@@ -3,9 +3,9 @@ import "./Trait.css";
 import SchemaDisplay from "../SchemaDisplay/SchemaDisplay";
 import ColoredDot from "../ColoredDot/ColoredDot";
 
-export default function Trait() {
+export default function Trait({ schemas, setSchemas}) {
   const [selectedValue, setSelectedValue] = useState("");
-  const [schemas, setSchemas] = useState([]);
+  // const [schemas, setSchemas] = useState([]);
 
   const allSchemas = [
     { label: "First Name", value: "first_name", category: "user" },

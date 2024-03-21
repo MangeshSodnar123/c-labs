@@ -4,8 +4,12 @@ import Navbar from "../Navbar/Navbar";
 import ColoredDot from "../ColoredDot/ColoredDot";
 import Trait from "../Trait/Trait";
 import ReactDom from "react-dom";
+import { useState } from "react";
 
 export default function Panal({ open, children, onClose }) {
+
+  const [schemas, setSchemas] = useState([]);
+
   if (!open) return null;
 
   return ReactDom.createPortal(
@@ -17,7 +21,7 @@ export default function Panal({ open, children, onClose }) {
           <Typography>Enter the name of the Segment</Typography>
           <input
             type="text"
-            className="input-box"
+            className="input-box" 
             placeholder="Name of the segment"
           />
 
@@ -47,7 +51,7 @@ export default function Panal({ open, children, onClose }) {
             </Box>
           </Box>
 
-          <Trait>Add schema to segment</Trait>
+          <Trait schemas={schemas} setSchemas={setSchemas}>Add schema to segment</Trait>
         </div>
         <div className="panal-footer">
           <Button
