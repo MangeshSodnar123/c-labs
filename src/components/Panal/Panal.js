@@ -5,16 +5,23 @@ import ColoredDot from "../ColoredDot/ColoredDot";
 import Trait from "../Trait/Trait";
 import ReactDom from "react-dom";
 import { useState } from "react";
+import { useSnackbar } from "notistack";
 
 export default function Panal({ open, onClose }) {
   const [segmentName, setSegmentName] = useState("");
   const [schemas, setSchemas] = useState([]);
+
+  const { enqueueSnackbar } = useSnackbar();
 
   if (!open) return null;
 
   //saving the segment
 
   const handleSaveSegment = async () => {
+    if (segmentName.length === 0 || schemas.length === 0) {
+      console.log("data can't be empty");
+      return;
+    }
     const data = {
       segment_name: segmentName,
       schema: schemas.map((schema) => ({
@@ -23,23 +30,35 @@ export default function Panal({ open, onClose }) {
           schema.label.slice(1).replace("_", " "),
       })),
     };
-    console.log("data: ",data)
+    console.log("data: ", data);
     try {
-      const response = await fetch("your-webhook-url", {
+      //testing url
+
+      const response = await fetch("https://eorlzb199786gce.m.pipedream.net", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        // mode: "cors",
         body: JSON.stringify(data),
       });
+      //testing url
 
       if (response.ok) {
         console.log("Segment saved successfully!");
-        onClose(); // Close the panel after saving
+        enqueueSnackbar("Segment saved successfully!", { variant: "success" });
+        
+        //reset the data
+        setSchemas([]);
+        setSegmentName("");
+        //close the panal after saving the data.
+        onClose(); 
       } else {
         console.error("Failed to save segment:", response.statusText);
+        enqueueSnackbar("Failed to save segment", { variant: "error" });
       }
     } catch (error) {
+      enqueueSnackbar(error.response.data.message, { variant: "error" });
       console.error("Error saving segment:", error.message);
     }
   };
