@@ -1,4 +1,4 @@
-.custom-dropdown {
+.custom-dropdown-d {
     height: 35px;
     width: 53%;
     background-color: #f1f1f1;
@@ -6,6 +6,8 @@
     border: 1px solid #ccc;
     font-size: 16px;
     padding: 5px;
+    margin-left: 15px;
+    margin-bottom: 1px;
     border-radius: 4px;
   }
   
@@ -16,5 +18,11 @@
   .custom-dropdown:focus {
     outline: none;
     border-color: #007bff;
+  }
+
+  .flexbox{
+    display: flex;
+    justify-content: start;
+    align-items: center;
   }
   
