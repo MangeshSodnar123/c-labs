@@ -20,6 +20,7 @@ export default function Panal({ open, onClose }) {
   const handleSaveSegment = async () => {
     if (segmentName.length === 0 || schemas.length === 0) {
       console.log("data can't be empty");
+      enqueueSnackbar("Data can't be empty!", { variant: "warning" });
       return;
     }
     const data = {
